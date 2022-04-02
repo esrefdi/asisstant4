@@ -15,17 +15,17 @@ async def skip(client, m: Message):
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await m.reply("**❌ Tidak ada apapun didalam antrian untuk dilewati!**")
+            await m.reply("**❌ Tnövbədə keçmək üçün heç nə yoxdur!**")
         elif op == 1:
-            await m.reply("Antrian Kosong, Meninggalkan Obrolan Suara**")
+            await m.reply("Boş növbə, Səsli Söhbətdən Çıxılır**")
         else:
             await m.reply(
-                f"**⏭ Melewati pemutaran** \n**🎧 Sekarang memutar** - [{op[0]}]({op[1]}) | `{op[2]}`",
+                f"**⏭ Oxutmadan keçin** \n**🎧 İndi oxunur** - [{op[0]}]({op[1]}) | `{op[2]}`",
                 disable_web_page_preview=True,
             )
     else:
         skip = m.text.split(None, 1)[1]
-        OP = "**🗑️ Menghapus lagu-lagu berikut dari Antrian: -**"
+        OP = "**🗑️Aşağıdakı mahnılar Növbədən silindi: -**"
         if chat_id in QUEUE:
             items = [int(x) for x in skip.split(" ") if x.isdigit()]
             items.sort(reverse=True)
@@ -54,7 +54,7 @@ async def stop(client, m: Message):
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
     else:
-        await m.reply("**❌ Tidak ada apapun yang sedang diputar!**")
+        await m.reply("**❌ Theç nə oynamır!**")
 
 
 @Client.on_message(filters.command(["pause"], prefixes=f"{HNDLR}"))
@@ -66,12 +66,12 @@ async def pause(client, m: Message):
         try:
             await call_py.pause_stream(chat_id)
             await m.reply(
-                f"**⏸ Pemutaran dijeda.**\n\n• Untuk melanjutkan pemutaran, gunakan perintah » {HNDLR}resume"
+                f"**⏸ oxutma dayandırıldı ** \ n \ n • Oxumağa davam etmək üçün əmrdən istifadə edin » {HNDLR}resume"
             )
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
     else:
-        await m.reply("** ❌ Tidak ada apapun yang sedang diputar!**")
+        await m.reply("** ❌ Theç nə oynamır!**")
 
 
 @Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}"))
@@ -83,9 +83,9 @@ async def resume(client, m: Message):
         try:
             await call_py.resume_stream(chat_id)
             await m.reply(
-                f"**▶ Melanjutkan pemutaran yang dijeda**\n\n• Untuk menjeda pemutaran, gunakan perintah » {HNDLR}pause**"
+                f"**▶ Fasilə edilmiş oxutmanı davam etdirin ** \ n \ n • Oxumağa fasilə vermək üçün əmrdən istifadə edin » {HNDLR}pause**"
             )
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
     else:
-        await m.reply("**❌ Tidak ada apapun yang sedang dijeda!**")
+        await m.reply("**❌ Heç bir şey dayandırılmayıb!**")
