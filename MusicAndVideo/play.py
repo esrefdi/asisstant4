@@ -136,24 +136,24 @@ async def play(client, m: Message):
                 await m.reply_photo(
                     photo="https://telegra.ph/file/6213d2673486beca02967.png",
                     caption=f"""
-**▶ Mulai Memutar Lagu
-🏷️ Judul: [{songname}]({link})
+**▶ Mahnı çalmağa başlayın
+🏷️səslənirl: [{songname}]({link})
 💬 Chat ID: {chat_id}
-🎧 Atas Permintaan: {m.from_user.mention}
+🎧 İstək üzrə: {m.from_user.mention}
 ====>[𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗧](https://t.me/GroupMusicRandom)<====**
 """,
                 )
 
     else:
         if len(m.command) < 2:
-            await m.reply("Balas ke File Audio atau berikan sesuatu untuk Pencarian")
+            await m.reply("Audio Fayla cavab verin və ya Axtarış üçün nəsə təqdim edin")
         else:
             await m.delete()
-            huehue = await m.reply("🔎 Pencarian")
+            huehue = await m.reply("🔎 Axtarılır")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
-                await huehue.edit("`Tidak Menemukan Apapun untuk Kueri yang Diberikan`")
+                await huehue.edit("`Verilmiş sorğu üçün heç nə tapılmadı`")
             else:
                 songname = search[0]
                 url = search[1]
@@ -168,10 +168,10 @@ async def play(client, m: Message):
                             chat_id,
                             photo=f"{image_thumbnail}",
                             caption=f"""
-**#⃣ Lagu Di Antrian Ke {pos}
-🏷️ Judul: [{songname}]({url})
+**#⃣ Mahnı növbə Ke {pos}
+🏷️️səslənirl: [{songname}]({url})
 💬 Chat ID: {chat_id}
-🎧 Atas Permintaan: {m.from_user.mention}
+🎧 İstək üzrə: {m.from_user.mention}
 ====>[𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗧](https://t.me/GroupMusicRandom)<====**
 """,
                         )
@@ -191,9 +191,9 @@ async def play(client, m: Message):
                                 photo=f"{image_thumbnail}",
                                 caption=f"""
 **▶ Mulai Memutar Lagu
-🏷️ Judul: [{songname}]({url})
+🏷️️səslənirl: [{songname}]({url})
 💬 Chat ID: {chat_id}
-🎧 Atas Permintaan: {m.from_user.mention}
+🎧 İstək üzrə: {m.from_user.mention}
 ====>[𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗖𝗛𝗔𝗧](https://t.me/GroupMusicRandom)<====**
 """,
                             )
@@ -221,7 +221,7 @@ async def vplay(client, m: Message):
                 else:
                     Q = 720
                     await huehue.edit(
-                        "`Hanya 720, 480, 360 Diizinkan` \n`Sekarang Streaming masuk 720p`"
+                        "``Yalnız 720, 480, 360 icazə verilir` \n`İndi 720p-də yayımlanır`"
                     )
 
             if replied.video:
@@ -376,7 +376,7 @@ async def playfrom(client, m: Message):
 """,
                     )
             await m.reply(
-                f"➕ Menambahkan {lmt} Lagu Ke Dalam Antrian\n• Ketik {HNDLR}playlist Untuk Melihat Daftar Putar**"
+                f"➕ {lmt} Mahnı Növbəyə Əlavə edilir\n• Pleylistə Baxmaq üçün {HNDLR}pleylist yazın**"
             )
         except Exception as e:
             await m.reply(f"**ERROR** \n`{e}`")
@@ -390,11 +390,11 @@ async def playlist(client, m: Message):
         if len(chat_queue) == 1:
             await m.delete()
             await m.reply(
-                f"**🎧 SEKARANG MEMUTAR:** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}`",
+                f"**🎧 İNDİ OYNAYIR:** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}`",
                 disable_web_page_preview=True,
             )
         else:
-            QUE = f"**🎧 SEKARANG MEMUTAR:** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯ DAFTAR ANTRIAN:**"
+            QUE = f"**🎧 İNDİ OYNAYIR:** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯ DAFTAR ANTRIAN:**"
             l = len(chat_queue)
             for x in range(1, l):
                 hmm = chat_queue[x][0]
